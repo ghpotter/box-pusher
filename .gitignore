@@ -21,3 +21,5 @@ mono_crash.*.json
 .vscode/
 .editorconfig
 .gitattributes
+*.pck
+export_presets.cfg
