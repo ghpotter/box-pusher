@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bkj7pj7mmdelk"]
+
+[ext_resource type="Script" uid="uid://beebkle42lnit" path="res://scripts/main_menu/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://cgnu002wc6b4y" path="res://scripts/main_menu/level_select.gd" id="3_wu84c"]
+
+[node name="MainMenu" type="Node2D" unique_id=2064842994]
+script = ExtResource("1_l6cm7")
+
+[node name="MainMenuUI" type="CanvasLayer" parent="." unique_id=1343082922]
+
+[node name="Background" type="ColorRect" parent="MainMenuUI" unique_id=231311432]
+unique_name_in_owner = true
+offset_right = 640.0
+offset_bottom = 640.0
+color = Color(0, 0, 1, 1)
+
+[node name="TitleBackground" type="ColorRect" parent="MainMenuUI/Background" unique_id=684624302]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 620.0
+offset_bottom = 160.0
+color = Color(0, 0, 0, 1)
+
+[node name="TitleLabel" type="Label" parent="MainMenuUI/Background/TitleBackground" unique_id=1304508221]
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 140.0
+text = "Box Pusher"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartGameRect" type="ColorRect" parent="MainMenuUI/Background" unique_id=167413832]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 180.0
+offset_right = 310.0
+offset_bottom = 460.0
+color = Color(0, 1, 0, 1)
+
+[node name="StartGameButton" type="Button" parent="MainMenuUI/Background/StartGameRect" unique_id=1599070784]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 290.0
+offset_bottom = 280.0
+text = "Start Game"
+
+[node name="QuitGameRect" type="ColorRect" parent="MainMenuUI/Background" unique_id=1086596975]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 180.0
+offset_right = 620.0
+offset_bottom = 460.0
+color = Color(1, 0, 0, 1)
+
+[node name="QuitGameButton" type="Button" parent="MainMenuUI/Background/QuitGameRect" unique_id=771945983]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 290.0
+offset_bottom = 280.0
+text = "Quit Game"
+
+[node name="ColorRect" type="ColorRect" parent="MainMenuUI/Background" unique_id=981788667]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 480.0
+offset_right = 620.0
+offset_bottom = 620.0
+color = Color(1, 0, 1, 1)
+
+[node name="LevelSelectButton" type="Button" parent="MainMenuUI/Background/ColorRect" unique_id=1174141409]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 140.0
+text = "Level Select"
+
+[node name="LevelSelectUI" type="CanvasLayer" parent="." unique_id=1695512191]
+script = ExtResource("3_wu84c")
+
+[node name="LevelSelectBackground" type="ColorRect" parent="LevelSelectUI" unique_id=1627426847]
+unique_name_in_owner = true
+visible = false
+offset_right = 640.0
+offset_bottom = 640.0
+color = Color(0, 0, 1, 1)

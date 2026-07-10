@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="Box Pusher"
-run/main_scene="uid://d17501eohrsfi"
+run/main_scene="uid://bkj7pj7mmdelk"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://gd3dw6r0c6en"
+config/windows_native_icon="res://resources/bitmap/favicon.ico"
 
 [autoload]
 
 InputHandler="*uid://c6g14tishlwtu"
+LevelData="*uid://b5cne5jiwcm0o"
 
 [display]
 
