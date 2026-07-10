@@ -1,0 +1,202 @@
+[gd_scene format=3 uid="uid://d17501eohrsfi"]
+
+[ext_resource type="Script" uid="uid://bo8l7vu38p6gw" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="AudioStream" uid="uid://dh710j2ohgtpk" path="res://sound/box.mp3" id="2_h2yge"]
+[ext_resource type="AudioStream" uid="uid://ktm0clyp2qr2" path="res://sound/Victory.mp3" id="3_1bvp3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ig7tw"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D" unique_id=6632606]
+script = ExtResource("1_lquwl")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=854003817]
+
+[node name="LevelLabel" type="Label" parent="UI" unique_id=1762329097]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level 1"
+label_settings = SubResource("LabelSettings_ig7tw")
+
+[node name="LevelCompleteLabel" type="Label" parent="UI" unique_id=993558291]
+unique_name_in_owner = true
+visible = false
+offset_left = 260.0
+offset_top = 297.0
+offset_right = 379.0
+offset_bottom = 320.0
+text = "Level Complete"
+
+[node name="RestartLevelButton" type="Button" parent="UI" unique_id=1104920928]
+unique_name_in_owner = true
+offset_left = 531.0
+offset_right = 640.0
+offset_bottom = 31.0
+text = "Restart Level"
+
+[node name="CompleteGameScreen" type="ColorRect" parent="UI" unique_id=1915979929]
+unique_name_in_owner = true
+visible = false
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 560.0
+offset_bottom = 560.0
+color = Color(0.05882353, 0.05882353, 0.05882353, 1)
+
+[node name="ResetRect" type="ColorRect" parent="UI/CompleteGameScreen" unique_id=2094831121]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 160.0
+offset_right = 213.0
+offset_bottom = 320.0
+color = Color(0, 1, 0, 1)
+
+[node name="RestartGameButton" type="Button" parent="UI/CompleteGameScreen/ResetRect" unique_id=1085270846]
+unique_name_in_owner = true
+z_as_relative = false
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 160.0
+text = "Restart Game"
+
+[node name="QuitRect" type="ColorRect" parent="UI/CompleteGameScreen" unique_id=1172523170]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 160.0
+offset_right = 426.0
+offset_bottom = 320.0
+color = Color(1, 0, 0, 1)
+
+[node name="QuitGameButton" type="Button" parent="UI/CompleteGameScreen/QuitRect" unique_id=672502844]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 160.0
+text = "Quit Game"
+
+[node name="GameCompleteLabel" type="Label" parent="UI/CompleteGameScreen" unique_id=539483659]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 32.0
+offset_right = 240.0
+offset_bottom = 84.5
+scale = Vector2(2, 2)
+text = "Game Complete!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="ColorRect" parent="UI" unique_id=150439083]
+unique_name_in_owner = true
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 560.0
+offset_bottom = 560.0
+color = Color(0.05882353, 0.05882353, 0.05882353, 1)
+
+[node name="StartRect" type="ColorRect" parent="UI/MainMenu" unique_id=525611803]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 160.0
+offset_right = 213.0
+offset_bottom = 320.0
+color = Color(0, 1, 0, 1)
+
+[node name="StartGameButton" type="Button" parent="UI/MainMenu/StartRect" unique_id=1118636880]
+unique_name_in_owner = true
+z_as_relative = false
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 160.0
+text = "Start Game"
+
+[node name="QuitRect" type="ColorRect" parent="UI/MainMenu" unique_id=631205303]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 160.0
+offset_right = 426.0
+offset_bottom = 320.0
+color = Color(1, 0, 0, 1)
+
+[node name="MenuQuitButton" type="Button" parent="UI/MainMenu/QuitRect" unique_id=558258457]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 160.0
+text = "Quit Game"
+
+[node name="GameNameLabel" type="Label" parent="UI/MainMenu" unique_id=1567719525]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 32.0
+offset_right = 240.0
+offset_bottom = 84.5
+scale = Vector2(2, 2)
+text = "Box Pusher"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectRect" type="ColorRect" parent="UI/MainMenu" unique_id=1699706653]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 349.0
+offset_right = 426.0
+offset_bottom = 454.0
+color = Color(0, 0, 1, 1)
+
+[node name="LevelSelectButton" type="Button" parent="UI/MainMenu/SelectRect" unique_id=1406146678]
+layout_mode = 0
+offset_right = 373.0
+offset_bottom = 105.0
+text = "Level Select"
+
+[node name="LevelSelectMenu" type="ColorRect" parent="UI" unique_id=1783381065]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 560.0
+offset_bottom = 560.0
+color = Color(0, 0, 1, 1)
+
+[node name="Test" type="ColorRect" parent="UI/LevelSelectMenu" unique_id=2111175121]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 92.0
+offset_bottom = 92.0
+
+[node name="Test2" type="ColorRect" parent="UI/LevelSelectMenu" unique_id=6743206]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 20.0
+offset_right = 184.0
+offset_bottom = 92.0
+
+[node name="Test3" type="ColorRect" parent="UI/LevelSelectMenu" unique_id=658498133]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 20.0
+offset_right = 276.0
+offset_bottom = 92.0
+
+[node name="Test4" type="ColorRect" parent="UI/LevelSelectMenu" unique_id=1983320469]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 20.0
+offset_right = 368.0
+offset_bottom = 92.0
+
+[node name="Test5" type="ColorRect" parent="UI/LevelSelectMenu" unique_id=1470729113]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 20.0
+offset_right = 460.0
+offset_bottom = 92.0
+
+[node name="BoxPushSoundPlayer" type="AudioStreamPlayer" parent="." unique_id=1292567851]
+unique_name_in_owner = true
+stream = ExtResource("2_h2yge")
+
+[node name="VictorySoundPlayer" type="AudioStreamPlayer" parent="." unique_id=1004824471]
+unique_name_in_owner = true
+stream = ExtResource("3_1bvp3")
