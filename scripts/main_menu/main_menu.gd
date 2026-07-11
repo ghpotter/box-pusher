@@ -1,7 +1,7 @@
 class_name MainMenu
 extends Node2D
 
-var main_game = MyMain.new()
+const MAIN_GAME = "res://scenes/main.tscn"
 
 func _ready() -> void:
 	%StartGameButton.pressed.connect(_on_start_requested)
@@ -10,7 +10,7 @@ func _ready() -> void:
 	%LevelSelectButton.pressed.connect(_on_level_select_requested)
 
 func _on_start_requested() -> void:
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file(MAIN_GAME)
 
 func _on_quit_requested() -> void:
 	get_tree().quit()

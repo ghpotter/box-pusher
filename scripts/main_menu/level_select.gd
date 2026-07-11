@@ -4,6 +4,7 @@ extends CanvasLayer
 const BUTTONS_IN_ROW = 5
 const BUTTON_SIZE = Vector2(72, 72)
 const BUTTON_COLOR = Color(0, 1, 1, 0.5)
+const MAIN_GAME = "res://scenes/main.tscn"
 
 func _ready() -> void:
 	for level_number in range(len(LevelData.levels)):
@@ -16,7 +17,7 @@ func _ready() -> void:
 		levelRect.color = BUTTON_COLOR
 		var levelButton = Button.new()
 		levelButton.size = BUTTON_SIZE
-		levelButton.text = "Level %d" % [level_number + 1]
+		levelButton.text = LevelData.levels[level_number][LevelData.Level.LEVEL_NAME]
 		levelButton.pressed.connect(_on_load_level.bind(level_number))
 		levelRect.add_child(levelButton)
 
@@ -28,4 +29,4 @@ func _divmod(number: int, base: int) -> Array:
 
 func _on_load_level(level: int) -> void:
 	LevelData.current_level = level
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file(MAIN_GAME)
