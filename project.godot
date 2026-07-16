@@ -18,8 +18,9 @@ config/windows_native_icon="res://resources/bitmap/favicon.ico"
 
 [autoload]
 
-InputHandler="*uid://c6g14tishlwtu"
 LevelData="*uid://b5cne5jiwcm0o"
+FileLocations="*uid://b6f387o05neia"
+InputHandler="*uid://c6g14tishlwtu"
 
 [display]
 

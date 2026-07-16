@@ -1,0 +1,228 @@
+[gd_scene format=3 uid="uid://bgpc4hv4dshah"]
+
+[ext_resource type="Script" uid="uid://u74fmq7rwgqi" path="res://scripts/level_editor/level_editor.gd" id="1_ci1mn"]
+[ext_resource type="Texture2D" uid="uid://drrw23khjp8uv" path="res://resources/bitmap/bent_arrow.png" id="2_5u7ie"]
+[ext_resource type="Texture2D" uid="uid://c371yvjcltq2i" path="res://resources/bitmap/reverse_bent_arrow.png" id="3_nh68x"]
+[ext_resource type="Texture2D" uid="uid://cs6427sfxmbdl" path="res://resources/bitmap/BoxPusherTileMap.png" id="4_nh68x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ci1mn"]
+bg_color = Color(0, 0.6, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjsnv"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mfi1"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5u7ie"]
+bg_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nh68x"]
+bg_color = Color(0, 0.6, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eovuc"]
+bg_color = Color(0.6, 0, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbqyk"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4hv8"]
+bg_color = Color(0, 0.6, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eovuc"]
+atlas = ExtResource("4_nh68x")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh68x"]
+atlas = ExtResource("4_nh68x")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjsnv"]
+atlas = ExtResource("4_nh68x")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbqyk"]
+atlas = ExtResource("4_nh68x")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4hv8"]
+atlas = ExtResource("4_nh68x")
+region = Rect2(64, 64, 64, 64)
+
+[node name="LevelEditor" type="Node2D" unique_id=375710762]
+script = ExtResource("1_ci1mn")
+
+[node name="LevelEditorUI" type="CanvasLayer" parent="." unique_id=177638325]
+
+[node name="LevelEditorBackground" type="ColorRect" parent="LevelEditorUI" unique_id=1606853994]
+visible = false
+offset_right = 640.0
+offset_bottom = 640.0
+color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+
+[node name="SaveLevelDialog" type="FileDialog" parent="LevelEditorUI" unique_id=1634931382]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Save Level"
+dialog_hide_on_ok = true
+access = 2
+root_subfolder = "resources/levels/custom_levels/"
+hidden_files_toggle_enabled = false
+favorites_enabled = false
+
+[node name="LoadLevelDialog" type="FileDialog" parent="LevelEditorUI" unique_id=1549154082]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+root_subfolder = "resources/levels/"
+hidden_files_toggle_enabled = false
+folder_creation_enabled = false
+favorites_enabled = false
+overwrite_warning_enabled = false
+
+[node name="ControlMenuRect" type="ColorRect" parent="LevelEditorUI" unique_id=199436681]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 635.0
+offset_bottom = 105.0
+
+[node name="NewLevelButton" type="Button" parent="LevelEditorUI/ControlMenuRect" unique_id=1032017932]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 110.0
+offset_bottom = 42.0
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_ci1mn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jjsnv")
+text = "New Level"
+
+[node name="QuitGameButton" type="Button" parent="LevelEditorUI/ControlMenuRect" unique_id=300702294]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 450.0
+offset_top = 10.0
+offset_right = 550.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_1mfi1")
+text = "Quit Game
+"
+
+[node name="MainMenuButton" type="Button" parent="LevelEditorUI/ControlMenuRect" unique_id=1081557767]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 340.0
+offset_top = 10.0
+offset_right = 440.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_5u7ie")
+text = "Main Menu"
+
+[node name="LoadLevelButton" type="Button" parent="LevelEditorUI/ControlMenuRect" unique_id=1914052901]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 120.0
+offset_top = 10.0
+offset_right = 220.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_nh68x")
+text = "Load Level"
+
+[node name="SaveLevelButton" type="Button" parent="LevelEditorUI/ControlMenuRect" unique_id=608471950]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 230.0
+offset_top = 10.0
+offset_right = 330.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_eovuc")
+text = "Save Level"
+
+[node name="UndoButton" type="Button" parent="LevelEditorUI/ControlMenuRect" unique_id=1721465352]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 52.0
+offset_right = 120.0
+offset_bottom = 92.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_gbqyk")
+icon = ExtResource("2_5u7ie")
+icon_alignment = 1
+
+[node name="RedoButton" type="Button" parent="LevelEditorUI/ControlMenuRect" unique_id=209861730]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 130.0
+offset_top = 52.0
+offset_right = 240.0
+offset_bottom = 92.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_l4hv8")
+icon = ExtResource("3_nh68x")
+icon_alignment = 1
+
+[node name="TileSelectionBackground" type="ColorRect" parent="LevelEditorUI" unique_id=439492027]
+offset_left = 5.0
+offset_top = 110.0
+offset_right = 87.0
+offset_bottom = 635.0
+
+[node name="FloorButton" type="Button" parent="LevelEditorUI/TileSelectionBackground" unique_id=549128153]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 77.0
+offset_bottom = 77.0
+icon = SubResource("AtlasTexture_eovuc")
+
+[node name="WallButton" type="Button" parent="LevelEditorUI/TileSelectionBackground" unique_id=1099661399]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 82.0
+offset_right = 77.0
+offset_bottom = 154.0
+icon = SubResource("AtlasTexture_nh68x")
+
+[node name="GoalButton" type="Button" parent="LevelEditorUI/TileSelectionBackground" unique_id=1852981287]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 159.0
+offset_right = 77.0
+offset_bottom = 231.0
+icon = SubResource("AtlasTexture_jjsnv")
+
+[node name="PlayerButton" type="Button" parent="LevelEditorUI/TileSelectionBackground" unique_id=994123866]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 236.0
+offset_right = 77.0
+offset_bottom = 308.0
+icon = SubResource("AtlasTexture_gbqyk")
+
+[node name="BoxButton" type="Button" parent="LevelEditorUI/TileSelectionBackground" unique_id=1519773429]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 313.0
+offset_right = 77.0
+offset_bottom = 385.0
+icon = SubResource("AtlasTexture_l4hv8")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1522670603]
+rotation = -0.017453292
+anchor_mode = 0
+
+[connection signal="file_selected" from="LevelEditorUI/SaveLevelDialog" to="." method="_on_save_level_dialog_file_selected"]
+[connection signal="file_selected" from="LevelEditorUI/LoadLevelDialog" to="." method="_on_load_level_dialog_file_selected"]

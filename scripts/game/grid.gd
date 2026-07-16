@@ -5,7 +5,6 @@ const SOURCE_ID = 0
 const FLOOR = Vector2i(0,0)
 const WALL = Vector2i(1,0)
 const GOAL = Vector2i(2,0)
-const TILE_SIZE = 64
 
 var level_map: Array
 var goal_tiles: Array[Vector2i]
@@ -13,6 +12,10 @@ var player_start: Vector2i
 var box_starts: Array
 
 func build_level(level_data: Dictionary) -> void:
+	if len(level_data) != 4:
+		print(len(level_data))
+		print("Error building level")
+		return
 	clear()
 	goal_tiles.clear()
 	level_map = level_data[LevelData.Level.LEVEL_MAP]

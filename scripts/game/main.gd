@@ -9,9 +9,21 @@ var max_level := len(LevelData.levels)
 
 var move_list : Array
 
-enum Entity { PLAYER, BOX }
-enum GameState { START, PLAYING, ANIMATION, TRANSITION, COMPLETE }
+enum Entity {
+	PLAYER,
+	BOX,
+}
+enum GameState {
+	START,
+	PLAYING,
+	ANIMATION,
+	TRANSITION,
+	COMPLETE,
+}
 var game_state : GameState
+
+@onready var BOX_SOUND := %BoxPushSoundPlayer
+@onready var VICTORY_SOUND := %VictorySoundPlayer
 
 func _ready() -> void:
 	create_game()
@@ -22,11 +34,11 @@ func create_game() -> void:
 	InputHandler.quit_requested.connect(_on_quit_requested)
 	InputHandler.restart_level_requested.connect(_on_restart_level_requested)
 	%RestartLevelButton.pressed.connect(_on_restart_level_requested)
-	InputHandler.undo_move_requested.connect(_on_undo_move_requested)
+	InputHandler.undo_requested.connect(_on_undo_move_requested)
 	InputHandler.move_requested.connect(_on_move_requested)
 	%RestartGameButton.pressed.connect(_on_restart_game_requested)
 
-	tile_map.tile_set = preload("res://resources/bitmap/box_pusher_tile_set.tres")
+	tile_map.tile_set = preload(FileLocations.TILE_SET_TRES)
 	add_child(tile_map)
 
 func _on_quit_requested() -> void:
@@ -64,7 +76,7 @@ func _on_move_requested(dir: Vector2i) -> void:
 
 func _on_restart_game_requested() -> void:
 	LevelData.current_level = 0
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file(FileLocations.MAIN_MENU_TSCN)
 
 
 func load_level(level_number: int) -> void:
@@ -72,12 +84,10 @@ func load_level(level_number: int) -> void:
 	%LevelLabel.text = "Level %d of %d" % [(LevelData.current_level + 1), max_level]
 	tile_map.build_level(LevelData.get_level(level_number))
 	player = Player.new(tile_map.player_start)
-	player.tile_map = tile_map
 	add_child(player)
 
 	for b in tile_map.box_starts:
 		boxes[b] = Box.new(b)
-		boxes[b].tile_map = tile_map
 		add_child(boxes[b])
 
 	game_state = GameState.PLAYING
@@ -110,9 +120,9 @@ func try_move(pos: Vector2i, dir: Vector2i, is_box: bool = false) -> bool:
 func move_box(box: Box, target: Vector2i) -> void:
 	boxes.erase(box.grid_pos)
 	box.grid_pos = target
-	box.update_visuals()
+	box.update_visuals(box.grid_pos in tile_map.goal_tiles)
 	boxes[target] = box
-	%BoxPushSoundPlayer.play()
+	BOX_SOUND.play()
 
 func save_move(player_pos: Vector2i, dir: Vector2i, box_pos: Vector2i) -> void:
 	var move = {Entity.PLAYER: [player_pos, player_pos + dir]}
@@ -136,14 +146,14 @@ func animate_move(undo: bool = false) -> void:
 	var tween = create_tween()
 	tween.set_parallel()
 	if undo:
-		tween.tween_property(player, "position", Vector2(move[Entity.PLAYER][0] * tile_map.TILE_SIZE), 0.25)
+		tween.tween_property(player, "position", Vector2(move[Entity.PLAYER][0] * LevelData.TILE_SIZE), 0.25)
 		if Entity.BOX in move:
-			tween.tween_property(move[Entity.BOX][0],"position", Vector2(move[Entity.BOX][1] * tile_map.TILE_SIZE), 0.25)
+			tween.tween_property(move[Entity.BOX][0],"position", Vector2(move[Entity.BOX][1] * LevelData.TILE_SIZE), 0.25)
 
 	else:
-		tween.tween_property(player, "position", Vector2(move[Entity.PLAYER][1] * tile_map.TILE_SIZE), 0.25)
+		tween.tween_property(player, "position", Vector2(move[Entity.PLAYER][1] * LevelData.TILE_SIZE), 0.25)
 		if Entity.BOX in move:
-			tween.tween_property(move[Entity.BOX][0],"position", Vector2(move[Entity.BOX][2] * tile_map.TILE_SIZE), 0.25)
+			tween.tween_property(move[Entity.BOX][0],"position", Vector2(move[Entity.BOX][2] * LevelData.TILE_SIZE), 0.25)
 	await tween.finished
 	if game_state == GameState.ANIMATION:
 		game_state = GameState.PLAYING
@@ -155,7 +165,7 @@ func flag_victory() -> void:
 			count += 1
 	if count == len(tile_map.goal_tiles):
 		game_state = GameState.TRANSITION
-		%VictorySoundPlayer.play()
+		VICTORY_SOUND.play()
 
 func advance_level() -> void:
 		LevelData.current_level += 1

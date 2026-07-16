@@ -5,14 +5,22 @@ var ACTIVE_BOX : Rect2
 var WIN_BOX : Rect2
 
 func _ready() -> void:
-	ACTIVE_BOX = Rect2(1 * tile_map.TILE_SIZE, 1 * tile_map.TILE_SIZE, tile_map.TILE_SIZE, tile_map.TILE_SIZE)
-	WIN_BOX = Rect2(2 * tile_map.TILE_SIZE, 1 * tile_map.TILE_SIZE, tile_map.TILE_SIZE, tile_map.TILE_SIZE)
+	ACTIVE_BOX = Rect2(
+			1 * LevelData.TILE_SIZE,
+			1 * LevelData.TILE_SIZE,
+			LevelData.TILE_SIZE,
+			LevelData.TILE_SIZE)
+	WIN_BOX = Rect2(
+			2 * LevelData.TILE_SIZE,
+			1 * LevelData.TILE_SIZE,
+			LevelData.TILE_SIZE,
+			LevelData.TILE_SIZE)
 	super._build_sprite(1, 1)
 	super.update_pixel_position()
 
-func update_visuals() -> void:
+func update_visuals(on_goal_tile: bool) -> void:
 	var my_texture = sprite.texture
-	if grid_pos in tile_map.goal_tiles:
+	if on_goal_tile:
 		my_texture.region = WIN_BOX
 	else:
 		if my_texture.region == WIN_BOX:

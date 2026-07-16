@@ -1,7 +1,8 @@
 extends Node
 
 signal move_requested(dir: Vector2i)
-signal undo_move_requested
+signal undo_requested
+signal redo_requested
 signal restart_level_requested
 signal quit_requested
 
@@ -13,7 +14,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		restart_level_requested.emit()
 		return
 	if event.is_action_pressed("ui_undo"):
-		undo_move_requested.emit()
+		undo_requested.emit()
+		return
+	if event.is_action_pressed("ui_redo"):
+		redo_requested.emit()
 		return
 	if event.is_action_pressed("ui_up"):
 		move_requested.emit(Vector2i(0, -1))

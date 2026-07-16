@@ -34,46 +34,62 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 20.0
 offset_top = 180.0
-offset_right = 310.0
+offset_right = 207.0
 offset_bottom = 460.0
 color = Color(0, 1, 0, 1)
 
 [node name="StartGameButton" type="Button" parent="MainMenuUI/Background/StartGameRect" unique_id=1599070784]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 290.0
+offset_right = 187.0
 offset_bottom = 280.0
 text = "Start Game"
 
+[node name="LevelSelectRect" type="ColorRect" parent="MainMenuUI/Background" unique_id=981788667]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 180.0
+offset_right = 414.0
+offset_bottom = 460.0
+color = Color(1, 0, 1, 1)
+
+[node name="LevelSelectButton" type="Button" parent="MainMenuUI/Background/LevelSelectRect" unique_id=1174141409]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 280.0
+text = "Level Select"
+
 [node name="QuitGameRect" type="ColorRect" parent="MainMenuUI/Background" unique_id=1086596975]
 layout_mode = 0
-offset_left = 330.0
+offset_left = 434.0
 offset_top = 180.0
-offset_right = 620.0
+offset_right = 621.0
 offset_bottom = 460.0
 color = Color(1, 0, 0, 1)
 
 [node name="QuitGameButton" type="Button" parent="MainMenuUI/Background/QuitGameRect" unique_id=771945983]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 290.0
+offset_right = 187.0
 offset_bottom = 280.0
 text = "Quit Game"
 
-[node name="ColorRect" type="ColorRect" parent="MainMenuUI/Background" unique_id=981788667]
+[node name="LevelEditorRect" type="ColorRect" parent="MainMenuUI/Background" unique_id=1923801206]
+y_sort_enabled = true
 layout_mode = 0
 offset_left = 20.0
 offset_top = 480.0
 offset_right = 620.0
 offset_bottom = 620.0
-color = Color(1, 0, 1, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="LevelSelectButton" type="Button" parent="MainMenuUI/Background/ColorRect" unique_id=1174141409]
+[node name="LevelEditorButton" type="Button" parent="MainMenuUI/Background/LevelEditorRect" unique_id=1852969215]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 600.0
 offset_bottom = 140.0
-text = "Level Select"
+text = "Level Editor"
 
 [node name="LevelSelectUI" type="CanvasLayer" parent="." unique_id=1695512191]
 script = ExtResource("3_wu84c")
